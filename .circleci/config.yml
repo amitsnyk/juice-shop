@@ -18,6 +18,6 @@ jobs:
                 fail-on-issues: false
                 monitor-on-build: true
                 token-variable: SNYK_TOKEN
-            - additional-args: --app-vulns
+                additional-arguments: --app-vulns
         workflows: null
 

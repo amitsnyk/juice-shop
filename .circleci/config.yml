@@ -10,11 +10,15 @@ jobs:
     build:
         docker:
             - image: circleci/node:12
+              auth:
+                username: amitsnyk # can specify string literal values
+                password: DOCKERHUB_PASSWORD 
         steps:
             - checkout
             - run: npm install --force
             - run: npm update
             - snyk/scan:
+                docker-image-name: amitsnyk/snyk-juice-shop
                 fail-on-issues: false
                 monitor-on-build: true
                 token-variable: SNYK_TOKEN

@@ -22,5 +22,11 @@ jobs:
                 monitor-on-build: true
                 token-variable: SNYK_TOKEN
                 additional-arguments: --app-vulns
+            - snyk/scan:
+                fail-on-issues: false
+                monitor-on-build: false
+                token-variable: SNYK_TOKEN
+                additional-arguments: --code
+
         workflows: null
 

@@ -26,12 +26,15 @@ jobs:
                 fail-on-issues: false
                 monitor-on-build: false
                 token-variable: SNYK_TOKEN
-                additional-arguments: --code --json | snyk-to-html -o results.html
+                additional-arguments: --code --json-file-output=results.json
+            - run:
+                name: run-html-report
+                command: snyk-to-html -i results.json -o results.html
             - store_artifacts:
+                path: results.json
+                destination: results.json
+            - store_artifats:
                 path: results.html
                 destination: results.html
-            - store_artifacts:
-                path: test.txt
-                destination: test.text
         workflows: null
 

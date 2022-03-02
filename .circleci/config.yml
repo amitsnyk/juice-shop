@@ -33,7 +33,7 @@ jobs:
             - store_artifacts:
                 path: results.json
                 destination: results.json
-            - store_artifats:
+            - store_artifacts:
                 path: results.html
                 destination: results.html
         workflows: null

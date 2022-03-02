@@ -10,23 +10,19 @@ jobs:
     build:
         docker:
             - image: circleci/node:12
-        environment:      
-            IMAGE_NAME: amitsnyk/snyk-juice-shop
         steps:
             - checkout
             - run: npm install --force
             - run: npm update
             - snyk/scan:
-                docker-image-name: amitsnyk/snyk-juice-shop
                 fail-on-issues: false
                 monitor-on-build: true
                 token-variable: SNYK_TOKEN
-                additional-arguments: --app-vulns
+                additional-arguments: --container amitsnyk/snyk-juice-shop:latest --app-vulns
             - snyk/scan:
                 fail-on-issues: false
                 monitor-on-build: false
                 token-variable: SNYK_TOKEN
-                additional-arguments: --code
-
+                additional-arguments: --code --json
         workflows: null
 

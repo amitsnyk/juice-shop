@@ -10,9 +10,8 @@ jobs:
     build:
         docker:
             - image: circleci/node:12
-              auth:
-                username: amitsnyk # can specify string literal values
-                password: DOCKERHUB_PASSWORD 
+        environment:      
+            IMAGE_NAME: amitsnyk/snyk-juice-shop
         steps:
             - checkout
             - run: npm install --force

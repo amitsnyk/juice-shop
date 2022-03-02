@@ -14,15 +14,24 @@ jobs:
             - checkout
             - run: npm install --force
             - run: npm update
-            - snyk/scan:
-                fail-on-issues: false
-                monitor-on-build: true
-                token-variable: SNYK_TOKEN
-                additional-arguments: --container amitsnyk/snyk-juice-shop:latest --app-vulns
+            - run:
+                name: install-snyk-html-report
+                command: 'sudo npm install snyk-to-html -g'
+            #- snyk/scan:
+            #    fail-on-issues: false
+            #    monitor-on-build: true
+            #    token-variable: SNYK_TOKEN
+            #    additional-arguments: --container amitsnyk/snyk-juice-shop:latest --app-vulns
             - snyk/scan:
                 fail-on-issues: false
                 monitor-on-build: false
                 token-variable: SNYK_TOKEN
-                additional-arguments: --code --json
+                additional-arguments: --code --json | snyk-to-html -o results.html
+            - store_artifacts:
+                path: results.html
+                destination: results.html
+            - store_artifacts:
+                path: test.txt
+                destination: test.text
         workflows: null
 

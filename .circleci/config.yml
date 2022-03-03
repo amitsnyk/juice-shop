@@ -26,7 +26,7 @@ jobs:
                 fail-on-issues: false
                 monitor-on-build: false
                 token-variable: SNYK_TOKEN
-                additional-arguments: --code --json-file-output=results.json
+                additional-arguments: --code --json > results.json
             - store_artifacts:
                 path: results.json
                 destination: results.json

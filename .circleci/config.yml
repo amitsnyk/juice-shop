@@ -16,7 +16,7 @@ jobs:
             - run: npm update
             - snyk/scan:
                 monitor-on-build: true
-                fail-on-issues: true
+                fail-on-issues: false
                 token-variable: SNYK_TOKEN
                 additional-arguments: --container amitsnyk/snyk-juice-shop:latest --app-vulns
         workflows: null

@@ -15,8 +15,8 @@ jobs:
             - run: npm install --force
             - run: npm update
             - snyk/scan:
-                fail-on-issues: true
                 monitor-on-build: true
+                fail-on-issues: true
                 token-variable: SNYK_TOKEN
                 additional-arguments: --container amitsnyk/snyk-juice-shop:latest --app-vulns
         workflows: null

@@ -16,7 +16,8 @@ jobs:
             - run: npm update
             - run: #install script to generate Snyk results in HTML format
                 name: install-snyk-to-html 
-                command: npm install --prefix=$HOME/.local --global snyk-to-html 
+                command: curl https://github.com/snyk/snyk-to-html.git -o snyk-to-html
+                command: chmod +x ./snyk-to-html
             - snyk/scan: #SCA scan
                 fail-on-issues: false
                 monitor-on-build: true

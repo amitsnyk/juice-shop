@@ -15,7 +15,7 @@ jobs:
                 chmod +x ./snyk
                 curl https://github.com/snyk/snyk-to-html.git -o snyk-to-html
                 chmod +x ./snyk-to-html
-                ./snyk auth SNYK_TOKEN
+                ./snyk auth $SNYK_TOKEN
                 ./snyk monitor --json | ./snyk-to-html -o sca_results.html
             - store_artifacts: #store SCA HTML artifact
                 path: sca_results.html

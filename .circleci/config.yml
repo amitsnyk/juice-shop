@@ -13,7 +13,7 @@ jobs:
             - run: |
                 curl https://static.snyk.io/cli/latest/snyk-linux -o snyk
                 chmod +x ./snyk
-                curl https://github.com/snyk/snyk-to-html.git -o snyk-to-html
+                curl https://github.com/snyk/snyk-to-html/releases -o snyk-to-html
                 chmod +x ./snyk-to-html
                 ./snyk auth $SNYK_TOKEN
                 ./snyk monitor 

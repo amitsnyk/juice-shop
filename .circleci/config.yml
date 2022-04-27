@@ -16,11 +16,11 @@ jobs:
                 curl -L https://github.com/snyk/snyk-to-html/releases/download/v2.3.1/snyk-to-html-linux -o snyk-to-html
                 chmod +x ./snyk-to-html
                 ./snyk auth $SNYK_TOKEN
-            - run: ./snyk test --severity-threshold=critical --json | ./snyk-to-html -o sca_results.html #SCA scan with severity threshold set to high
+            - run: ./snyk test --severity-threshold=critical --json | ./snyk-to-html -o sca_results.html || true #SCA scan with severity threshold set to high
             - store_artifacts: #store SCA HTML artifact
                 path: sca_results.html
                 destination: sca_results.html
-            - run: ./snyk code test --json | ./snyk-to-html -o code_results.html #SAST code scan
+            - run: ./snyk code test --json | ./snyk-to-html -o code_results.html || true #SAST code scan
             - store_artifacts: #store HTML output from custom script
                 path: code_results.html
                 destination: code_results.html

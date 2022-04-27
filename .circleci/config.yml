@@ -17,8 +17,7 @@ jobs:
                 chmod +x ./snyk-to-html
                 ./snyk auth $SNYK_TOKEN
                 ./snyk monitor 
-                ./snyk test --severity-threshold=critical --fail-on=patchable --json > results.json
-                ./snyk-to-html -i results.json -o sca_results.html
+                ./snyk test --severity-threshold=critical --fail-on=patchable --json | snyk-to-html -o sca_results.html
             - store_artifacts: #store SCA HTML artifact
                 path: sca_results.html
                 destination: sca_results.html

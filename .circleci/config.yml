@@ -7,8 +7,8 @@ jobs:
             - image: circleci/node:latest
         steps:
             - checkout
-            - run: npm install --force
-            - run: npm update
+            #- run: npm install --force
+            #- run: npm update
             - run: | #install Snyk CLI tool and snyk-to-html + authenticate into Snyk
                 curl https://static.snyk.io/cli/latest/snyk-linux -o snyk
                 chmod +x ./snyk

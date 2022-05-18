@@ -30,7 +30,7 @@ jobs:
                
             # SAST code scan   
             - run: |
-                if ./snyk code test --json | ./snyk-to-html -o code_results.html || ; then
+                if ./snyk code test --json | ./snyk-to-html -o code_results.html ; then
                     echo "SAST test passed successfully"
                     sast_exit_code=0
                 else
@@ -42,7 +42,7 @@ jobs:
             
             # Container image scan - replace amitsnyk/snyk-juice-shop:latest with your registry/image_name:tag.
             - run: |
-                ./snyk container test amitsnyk/snyk-juice-shop:latest --json | ./snyk-to-html -o container_results.html ; then
+                if ./snyk container test amitsnyk/snyk-juice-shop:latest --json | ./snyk-to-html -o container_results.html ; then
                     echo "Container test passed successfully"
                     container_exit_code=0
                 else
@@ -54,7 +54,7 @@ jobs:
             
             # IaC scan
             - run: |
-                ./snyk iac test --json | ./snyk-to-html -o iac_results.html ; then
+                if ./snyk iac test --json | ./snyk-to-html -o iac_results.html ; then
                     echo "IaC test passed successfully"
                     iac_exit_code=0
                 else

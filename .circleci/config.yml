@@ -66,6 +66,10 @@ jobs:
             
             #Fail build if any tests failed
             - run: |
+                echo $sca_exit_code
+                echo $sast_exit_code
+                echo $container_exit_code
+                echo $iac_exit_code
                 if [[ "$sca_exit_code" -eq 1 || "$sast_exit_code" -eq 1 || "$container_exit_code" -eq 1 || "$iac_exit_code" -eq 1 ]]; then
                     echo "One or more tests failed"
                     exit 1
